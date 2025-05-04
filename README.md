@@ -149,3 +149,29 @@
 - One-to-One with Bookings (Each payment is for one booking)
 
 
+## Feature Breakdown
+
+### 1. User Management
+Allows users to register, login, and manage their profiles. Hosts can upgrade to list properties, while guests can save favorites and manage bookings. Implements JWT authentication and OAuth for social logins.
+
+### 2. Property Management
+Enables hosts to create, update, and manage property listings with photos, descriptions, and pricing. Includes amenities tagging and location services with interactive maps for accurate property representation.
+
+### 3. Booking System
+Handles reservation workflows including availability calendars, pricing calculations, and instant/request bookings. Integrates conflict checking to prevent double bookings and manages booking states (pending/confirmed/cancelled).
+
+### 4. Reviews & Ratings
+Allows guests to leave ratings and reviews for properties they've booked. Includes host responses and implements moderation tools to maintain content quality. Features aggregate rating calculations.
+
+### 5. Search & Filtering
+Advanced search functionality with filters for location, dates, price range, amenities, and property types. Implements geolocation services and relevance sorting for optimal discovery experience.
+
+### 6. Payment Processing
+Secure payment gateway integration (Stripe) for handling deposits and rental payments. Manages refunds, receipts, and transaction histories. Includes fraud detection basics.
+
+### 7. Messaging System
+Real-time messaging between hosts and guests for booking inquiries and coordination. Features read receipts and notification system integration.
+
+### 8. Admin Dashboard
+Backend interface for managing users, properties, and bookings. Includes reporting tools, moderation capabilities, and system analytics for business insights.
+
