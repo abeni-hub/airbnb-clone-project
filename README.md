@@ -219,3 +219,5 @@ Backend interface for managing users, properties, and bookings. Includes reporti
 - **Payments**: Financial transactions and card data (PCI DSS requirements)
 - **Listings**: Prevent malicious content injection
 - **Bookings**: Protect against reservation fraud
+
+
