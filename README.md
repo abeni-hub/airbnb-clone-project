@@ -71,3 +71,81 @@
 ### Authentication
 - **JWT (JSON Web Tokens)**: Secure user authentication and authorization
 - **OAuth 2.0**: Social login integration (Google, Facebook, etc.)
+
+## Database Design
+
+### Key Entities
+
+#### 1. Users
+**Fields:**
+- `id` (Primary Key)
+- `email` (Unique)
+- `password_hash`
+- `first_name`
+- `last_name`
+- `profile_picture`
+- `is_host` (Boolean)
+
+**Relationships:**
+- One-to-Many with Properties (A user can list multiple properties)
+- One-to-Many with Bookings (A user can make multiple bookings)
+- One-to-Many with Reviews (A user can write multiple reviews)
+
+#### 2. Properties
+**Fields:**
+- `id` (Primary Key)
+- `title`
+- `description`
+- `price_per_night`
+- `bedrooms`
+- `bathrooms`
+- `location` (Geo-coordinates)
+- `host_id` (Foreign Key to Users)
+
+**Relationships:**
+- Many-to-One with Users (Each property belongs to one host)
+- One-to-Many with Bookings (A property can have multiple bookings)
+- One-to-Many with Reviews (A property can have multiple reviews)
+- Many-to-Many with Amenities (Through a junction table)
+
+#### 3. Bookings
+**Fields:**
+- `id` (Primary Key)
+- `start_date`
+- `end_date`
+- `total_price`
+- `status` (Pending/Confirmed/Cancelled)
+- `guest_id` (Foreign Key to Users)
+- `property_id` (Foreign Key to Properties)
+
+**Relationships:**
+- Many-to-One with Users (A booking belongs to one guest)
+- Many-to-One with Properties (A booking is for one property)
+- One-to-One with Payments (Each booking has one payment)
+
+#### 4. Reviews
+**Fields:**
+- `id` (Primary Key)
+- `rating` (1-5)
+- `comment`
+- `created_at`
+- `guest_id` (Foreign Key to Users)
+- `property_id` (Foreign Key to Properties)
+
+**Relationships:**
+- Many-to-One with Users (A review is written by one user)
+- Many-to-One with Properties (A review is about one property)
+
+#### 5. Payments
+**Fields:**
+- `id` (Primary Key)
+- `amount`
+- `payment_method`
+- `transaction_id`
+- `status`
+- `booking_id` (Foreign Key to Bookings)
+
+**Relationships:**
+- One-to-One with Bookings (Each payment is for one booking)
+
+
