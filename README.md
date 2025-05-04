@@ -221,3 +221,35 @@ Backend interface for managing users, properties, and bookings. Includes reporti
 - **Bookings**: Protect against reservation fraud
 
 
+## CI/CD Pipeline
+
+### What is CI/CD?
+Continuous Integration (CI) and Continuous Deployment (CD) are automated processes that help developers deliver code changes more frequently and reliably. CI focuses on regularly merging code changes into a shared repository with automated testing, while CD automates the deployment of validated changes to production environments.
+
+### Importance for This Project
+1. **Quality Assurance**: Automatically runs tests on every commit to catch bugs early
+2. **Deployment Speed**: Enables frequent, reliable updates to production
+3. **Consistency**: Eliminates "it works on my machine" problems through containerization
+4. **Rollback Safety**: Makes it easy to revert problematic deployments
+
+### Our Pipeline Tools
+1. **GitHub Actions**: 
+   - Runs automated tests (unit/integration) on every push/pull request
+   - Builds Docker images when tests pass
+   - Deploys to staging environment on merge to main branch
+
+2. **Docker**:
+   - Containerizes the application for consistent environments
+   - Enables easy scaling and deployment across different infrastructures
+
+3. **AWS CodeDeploy** (or similar):
+   - Manages blue-green deployments to minimize downtime
+   - Automates scaling based on traffic
+
+4. **Monitoring Tools**:
+   - Logging (AWS CloudWatch/ELK Stack)
+   - Performance monitoring (New Relic/Datadog)
+   - Error tracking (Sentry)
+
+### Pipeline Stages
+1. **Code Commit** → 2. **Automated Testing** → 3. **Build Artifacts** → 4. **Staging Deployment** → 5. **Manual Approval** → 6. **Production Deployment**
