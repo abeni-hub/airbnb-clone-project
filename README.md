@@ -175,3 +175,47 @@ Real-time messaging between hosts and guests for booking inquiries and coordinat
 ### 8. Admin Dashboard
 Backend interface for managing users, properties, and bookings. Includes reporting tools, moderation capabilities, and system analytics for business insights.
 
+## API Security
+
+### Key Security Measures
+
+#### 1. Authentication
+- **Implementation**: JWT (JSON Web Tokens) with refresh tokens
+- **Purpose**: Verifies user identity for all API requests
+- **Why It Matters**: Prevents unauthorized access to user accounts and sensitive operations
+
+#### 2. Authorization
+- **Implementation**: Role-based access control (RBAC)
+- **Purpose**: Restricts actions based on user roles (guest, host, admin)
+- **Why It Matters**: Ensures users can only perform permitted actions (e.g., hosts can't modify bookings they don't own)
+
+#### 3. Rate Limiting
+- **Implementation**: Throttling (e.g., 100 requests/minute per IP)
+- **Purpose**: Prevents brute force attacks and API abuse
+- **Why It Matters**: Protects against DDoS attacks and maintains system stability
+
+#### 4. Data Validation & Sanitization
+- **Implementation**: Input validation at API endpoints
+- **Purpose**: Filters malicious payloads and malformed data
+- **Why It Matters**: Prevents SQL injection and XSS attacks
+
+#### 5. Payment Security
+- **Implementation**: PCI-compliant Stripe integration with tokenization
+- **Purpose**: Never stores raw payment details in our database
+- **Why It Matters**: Protects sensitive financial data and prevents fraud
+
+#### 6. HTTPS Encryption
+- **Implementation**: TLS 1.2+ for all communications
+- **Purpose**: Encrypts data in transit
+- **Why It Matters**: Prevents man-in-the-middle attacks and eavesdropping
+
+#### 7. Audit Logging
+- **Implementation**: Logs all sensitive operations
+- **Purpose**: Tracks security-relevant events
+- **Why It Matters**: Enables incident investigation and compliance
+
+### Critical Protection Areas
+- **User Data**: Personal information and credentials (GDPR compliance)
+- **Payments**: Financial transactions and card data (PCI DSS requirements)
+- **Listings**: Prevent malicious content injection
+- **Bookings**: Protect against reservation fraud
